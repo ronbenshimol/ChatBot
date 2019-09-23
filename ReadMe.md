@@ -15,3 +15,7 @@ npm commands used:
 npm install express --save
 npm install nodemon --save-dev
 npm install body-parser --save
+npm install dialogflow --save
+
+setting the environment variable using tereminal:
+export GOOGLE_APPLICATION_CREDENTIALS="reactpageagent-erewlj-e93f34f91140.json"
