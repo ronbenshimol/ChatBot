@@ -1,14 +1,11 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.get('/', (req,res) => {
+app.use(bodyParser.json());
 
-    res.send({'hello':"there"});
-
-
-});
-
+require('./routes/dialogFlowRoutes')(app);
 
 
 
