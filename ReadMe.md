@@ -3,7 +3,7 @@ https://git.heroku.com/agile-anchorage-78427.git
 
 commands:
 heroku logs --tail
-
+git push heroku master
 
 
 
