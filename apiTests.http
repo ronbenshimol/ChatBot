@@ -4,3 +4,12 @@ content-type: application/json
 {
     "text": "where is snoopy?"
 }
+
+#################
+
+POST http://localhost:5000/api/df_event_query HTTP/1.1
+content-type: application/json
+
+{
+    "event": "Welcome"
+}
