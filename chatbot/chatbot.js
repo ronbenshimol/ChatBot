@@ -5,6 +5,8 @@ const structjson = require('./structJson');
 const config = require('../config/keys');
 
 const projectID = config.googleProjectID;
+const sessionId = config.dialogFlowSessionID;
+const languageCode = config.dialogFlowSessionLanguageCode;
 
 const credentials = {
     client_email: config.googleClientEmail,
@@ -13,13 +15,13 @@ const credentials = {
 
 
 const sessionClient = new dialogFlow.SessionsClient({projectID: projectID, credentials: credentials});
-const sessionPath = sessionClient.sessionPath(config.googleProjectID, config.dialogFlowSessionID);
+
 
 
 module.exports = {
 
-    textQuery: async function(text, parameters = {}){
-
+    textQuery: async function(text,userID, parameters = {}){
+        let sessionPath = sessionClient.sessionPath(projectID, sessionId + userID);
         let self = module.exports;
 
         const request = {
@@ -29,7 +31,7 @@ module.exports = {
                     // The query to send to the dialogflow agent
                     text: text,
                     // The language used by the client (en-US)
-                    languageCode: config.dialogFlowSessionLanguageCode,
+                    languageCode: languageCode,
                 },
             },
             queryParams:{
@@ -47,10 +49,11 @@ module.exports = {
         return responses;
     },
 
-    eventQuery: async function(event, parameters = {}){
+    eventQuery: async function(event, userID, parameters = {}){
 
         let self = module.exports;
-
+        let sessionPath = sessionClient.sessionPath(projectID, sessionId + userID);
+        
         const request = {
             session: sessionPath,
             queryInput: {
@@ -59,7 +62,7 @@ module.exports = {
                     name: event,
                     parameters: structjson.jsonToStructProto(parameters),
                     // The language used by the client (en-US)
-                    languageCode: config.dialogFlowSessionLanguageCode,
+                    languageCode: languageCode,
                 },
             }
         };

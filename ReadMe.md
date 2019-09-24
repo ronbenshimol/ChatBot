@@ -44,3 +44,7 @@ in client path:
 cd client
 npm install axios --save
 
+in client path, to generate uuid and save it to cookie (for sessions):
+cd client
+npm install uuid --save
+npm install universal-cookie --save
