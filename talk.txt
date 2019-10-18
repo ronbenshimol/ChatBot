@@ -1,0 +1,22 @@
+searching & not locating someone:
+
+p: locate [person]
+b: please enter [person]'s id
+p: 001140
+b: [person] is yet to be found.
+b: add description for [person]
+
+<open add description form>
+
+/////
+
+searching & locating someone:
+
+p: locate [person]
+b: please enter [person]'s id
+p: 001140
+b: returns [person] location and status
+
+shelter:
+p: what is the nearest shalter?
+b: the nearest shalter is the public school of  Oxford.
